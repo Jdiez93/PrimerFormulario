@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MilinsDiveCar</title>
+    <style>
+        /*  fondo */
+        body {
+            font-family: 'Verdana', sans-serif;
+            background-image: url("https://i.pinimg.com/originals/2b/e6/7f/2be67f3d885dead62682c01f0f6e8522.gif");
+            background-size: cover;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        /* Encabezado */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #2a2a2a;
+            color: #ff0000;
+            padding: 20px;
+        }
+
+        .logo {
+            max-width: 70px;
+            height: auto;
+        }
+
+        /* Formulario */
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 30px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: block;
+            color: #333;
+        }
+
+        /*Estilos para campos de entrada del formulario*/
+        input[type="text"],
+        input[type="tel"],
+        input[type="number"],
+        select {
+            width: 99%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        /*Estilo para el desplegable */
+        select {
+            padding-right: 30px;
+            background-color: #f9f9f9;
+            
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+        }
+
+        /*Estilo boton enviar*/
+        .submit-button {
+            background-color: #ff4500;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            float: right;
+        }
+
+        .submit-button:hover {
+            background-color: #ff3300;
+        }
+
+         
+
+        /* Resumen de datos */
+        #resumen-datos {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+
+        #resumen-datos h2 {
+            color: #ff4500;
+        }
+
+        #resumen-datos p {
+            margin: 10px 0;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>MilinCarConcesionario</h1>
+        <img class="logo" src="teslaLogo.png" alt="Logo de la empresa">
+    </div>
+
+    
+    <form action="#" method="post" onsubmit="mostrarResumen(event)">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+
+        <label for="apellidos">Apellidos:</label>
+        <input type="text" id="apellidos" name="apellidos" required>
+
+        <label for="dni">DNI:</label>
+        <input type="text" id="dni" name="dni" required>
+
+        <label for="residencia">Residencia:</label>
+        <input type="text" id="residencia" name="residencia" required>
+
+        <label for="codigo-postal">Código Postal:</label>
+        <input type="text" id="codigo-postal" name="codigo-postal" required>
+
+        <label for="telefono">Teléfono:</label>
+        <input type="tel" id="telefono" name="telefono" required>
+
+        <label for="marca-coche">Marca del Coche:</label>
+        <input type="text" id="marca-coche" name="marca-coche" value="" required>
+
+        <label for="color-coche">Color del Coche:</label>
+        <select id="color-coche" name="color-coche" required>
+            <option value="Negro">Negro</option>
+            <option value="Rojo">Rojo</option>
+            <option value="Azul">Azul</option>
+            <option value="Blanco">Blanco</option>
+            <option value="Gris">Gris</option>
+        </select>
+
+        <label for="matricula">Matrícula:</label>
+        <input type="text" id="matricula" name="matricula" value="" required>
+
+        <label for="precio-compra">Precio de Compra:</label>
+        <input type="number" id="precio-compra" name="precio-compra" value="" required>
+
+        <input type="submit" class="submit-button" value="Enviar">
+    </form>
+
+   
+    <div id="resumen-datos"></div>
+
+    <script>
+        function mostrarResumen(event) {
+            event.preventDefault(); 
+
+            // Recojo los datod del formulario con las variables (var)
+            var nombre = document.getElementById("nombre").value;
+            var apellidos = document.getElementById("apellidos").value;
+            var dni = document.getElementById("dni").value;
+            var residencia = document.getElementById("residencia").value;
+            var codigoPostal = document.getElementById("codigo-postal").value;
+            var telefono = document.getElementById("telefono").value;
+            var marcaCoche = document.getElementById("marca-coche").value;
+            var colorCoche = document.getElementById("color-coche").value;
+            var matricula = document.getElementById("matricula").value;
+            var precioCompra = document.getElementById("precio-compra").value;
+
+            // Creamos resumen de los datos
+            var resumen = `
+                <h2>Resumen de los datos introducidos:</h2>
+                <p><strong>Nombre:</strong> ${nombre}</p>
+                <p><strong>Apellidos:</strong> ${apellidos}</p>
+                <p><strong>DNI:</strong> ${dni}</p>
+                <p><strong>Residencia:</strong> ${residencia}</p>
+                <p><strong>Código Postal:</strong> ${codigoPostal}</p>
+                <p><strong>Teléfono:</strong> ${telefono}</p>
+                <p><strong>Marca del Coche:</strong> ${marcaCoche}</p>
+                <p><strong>Color del Coche:</strong> ${colorCoche}</p>
+                <p><strong>Matrícula:</strong> ${matricula}</p>
+                <p><strong>Precio de Compra:</strong> ${precioCompra}</p>
+            `;
+
+            // Muetro el resumen
+            document.getElementById("resumen-datos").innerHTML = resumen;
+        }
+    </script>
+</body>
+</html>
